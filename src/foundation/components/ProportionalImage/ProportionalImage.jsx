@@ -17,8 +17,8 @@ export function ProportionalImage({
     >
       <div className="foundation-ProportionalImage__inner">
         <picture>
-          <source className="foundation-ProportionalImage__img" srcSet={srcSet} alt={alt} />
-          <img className="foundation-ProportionalImage__img" src={src} alt={alt} />
+          <source className="foundation-ProportionalImage__img" srcSet={srcSet} alt={alt} loading="lazy" />
+          <img className="foundation-ProportionalImage__img" src={src} alt={alt} loading="lazy" />
         </picture>
       </div>
     </div>

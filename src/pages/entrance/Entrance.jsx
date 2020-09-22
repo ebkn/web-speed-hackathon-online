@@ -98,8 +98,8 @@ export function Entrance() {
           </div>
           <div className="Entrance__hero-contents">
             <picture>
-              <source type="image/webp" srcset={AmidaImageWebP} className="Entrance__hero-logo" alt="" />
-              <img src={AmidaImage} className="Entrance__hero-logo" alt="" />
+              <source type="image/webp" srcset={AmidaImageWebP} className="Entrance__hero-logo" alt="" loading="lazy" />
+              <img src={AmidaImage} className="Entrance__hero-logo" alt="" loading="lazy" />
             </picture>
             <p className="Entrance__hero-text">
               <span className="Entrance__hero-text-en">Amida Blog:</span>
