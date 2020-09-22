@@ -15,7 +15,7 @@ import Amida2Image from '../../assets/amida2.png';
 import AmidaImageWebP from '../../assets/amida.webp';
 import Amida2ImageWebP from '../../assets/amida2.webp';
 
-export function Entrance() {
+export default function Entrance() {
   const dispatch = useDispatch();
   const blogList = useSelector((state) => state.blogList);
   const [pickups, setPickups] = useState([]);
