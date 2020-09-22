@@ -2,10 +2,23 @@ import React, { Suspense, lazy } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-const Entrance = lazy(() => import('../pages/entrance/Entrance'));
-const BlogHome = lazy(() => import('../pages/blog_home/BlogHome'));
-const Entry = lazy(() => import('../pages/entry/Entry'));
-const NotFound = lazy(() => import('../pages/not_found/NotFound'));
+const Entrance = lazy(() => import(
+  /* webpackChunkName: "entrance" */
+  /* webpackPrefetch: true */
+  '../pages/entrance/Entrance'
+));
+const BlogHome = lazy(() => import(
+  /* webpackChunkName: "bloghome" */
+  '../pages/blog_home/BlogHome'
+));
+const Entry = lazy(() => import(
+  /* webpackChunkName: "entry" */
+  '../pages/entry/Entry'
+));
+const NotFound = lazy(() => import(
+  /* webpackChunkName: "notfound" */
+  '../pages/not_found/NotFound'
+));
 
 export function Routes() {
   const error = useSelector((state) => state.error);
@@ -17,18 +30,10 @@ export function Routes() {
   return (
     <Suspense fallback={<p>loading...</p>}>
       <Switch>
-        <Route exact path="/">
-          <Entrance />
-        </Route>
-        <Route exact path="/:blogId">
-          <BlogHome />
-        </Route>
-        <Route exact path="/:blogId/entry/:entryId">
-          <Entry />
-        </Route>
-        <Route path="*">
-          <NotFound />
-        </Route>
+        <Route exact path="/" component={<Entrance />} />
+        <Route exact path="/:blogId" component={<BlogHome />} />
+        <Route exact path="/:blogId/entry/:entryId" component={<Entry />} />
+        <Route path="*" component={<NotFound />} />
       </Switch>
     </Suspense>
   );
