@@ -1,8 +1,14 @@
 import React from 'react';
-import moment from 'moment-timezone';
+import dayjs from 'dayjs';
+import timezone from 'dayjs/plugin/timezone';
+import relativeTime from 'dayjs/plugin/relativeTime';
 import { Link } from 'react-router-dom';
 
 import { ProportionalImage } from '../../../../foundation/components/ProportionalImage';
+
+dayjs.extend(timezone);
+dayjs.extend(relativeTime);
+dayjs.tz.setDefault('Asia/Tokyo');
 
 export function CommentListItem({ comment }) {
   return (
@@ -21,10 +27,10 @@ export function CommentListItem({ comment }) {
         <footer className="comment-CommentListItem__footer">
           <Link to={`#comment-${comment.comment_id}`}>
             <time
-              dateTime={moment(comment.posted_at).toISOString(true)}
-              title={moment(comment.posted_at).toISOString(true)}
+              dateTime={dayjs(comment.posted_at).toISOString()}
+              title={dayjs(comment.posted_at).toISOString()}
             >
-              {moment(comment.posted_at).fromNow()}
+              {dayjs(comment.posted_at).fromNow()}
             </time>
           </Link>
         </footer>
