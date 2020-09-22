@@ -13,6 +13,8 @@ import { ProportionalImage } from '../../foundation/components/ProportionalImage
 
 import AmidaImage from '../../assets/amida.png';
 import Amida2Image from '../../assets/amida2.png';
+import AmidaImageWebP from '../../assets/amida.webp';
+import Amida2ImageWebP from '../../assets/amida2.webp';
 
 export function Entrance() {
   const dispatch = useDispatch();
@@ -89,12 +91,16 @@ export function Entrance() {
           <div className="Entrance__hero-bg">
             <ProportionalImage
               src={Amida2Image}
+              srcSet={Amida2ImageWebP}
               alt=""
               boxAspectRatio={9 / 16}
             />
           </div>
           <div className="Entrance__hero-contents">
-            <img src={AmidaImage} className="Entrance__hero-logo" alt="" />
+            <picture>
+              <source type="image/webp" srcset={AmidaImageWebP} className="Entrance__hero-logo" alt="" loading="lazy" />
+              <img src={AmidaImage} className="Entrance__hero-logo" alt="" loading="lazy" />
+            </picture>
             <p className="Entrance__hero-text">
               <span className="Entrance__hero-text-en">Amida Blog:</span>
               <span className="Entrance__hero-text-ja">{heroTextJa}</span>
