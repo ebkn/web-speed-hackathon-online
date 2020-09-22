@@ -4,7 +4,9 @@ import classNames from 'classnames';
 export function ProportionalImage({
   boxAspectRatio,
   roundedAsCardThumbnail,
-  ...imageProps
+  src,
+  srcSet,
+  alt,
 }) {
   return (
     <div
@@ -14,7 +16,10 @@ export function ProportionalImage({
       style={{ paddingTop: `calc(100% * ${boxAspectRatio})` }}
     >
       <div className="foundation-ProportionalImage__inner">
-        <img className="foundation-ProportionalImage__img" {...imageProps} />
+        <picture>
+          <source className="foundation-ProportionalImage__img" srcSet={srcSet} alt={alt} />
+          <img className="foundation-ProportionalImage__img" src={src} alt={alt} />
+        </picture>
       </div>
     </div>
   );
