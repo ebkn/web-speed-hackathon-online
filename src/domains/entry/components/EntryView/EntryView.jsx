@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'lodash';
 
 function Headline({ level, text }) {
   const tagName = `h${level}`;
@@ -72,7 +71,7 @@ function Embed({ html }) {
 export function EntryView({ items }) {
   return (
     <div className="entry-EntryView">
-      {_.map(items, (item, i) => {
+      {items.map((item, i) => {
         if (item.type === 'headline') {
           return <Headline key={i} {...item.data} />;
         }

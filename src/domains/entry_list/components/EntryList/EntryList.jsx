@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'lodash';
 import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
 import timezone from 'dayjs/plugin/timezone';
@@ -12,7 +11,7 @@ dayjs.tz.setDefault('Asia/Tokyo');
 export function EntryList({ blogId, list }) {
   return (
     <ul className="entry-list-EntryList">
-      {_.chain(list)
+      {list
         .filter((entry) => entry.publish_flag === 'open')
         .map((entry, i) => {
           return (
@@ -42,7 +41,7 @@ export function EntryList({ blogId, list }) {
             </li>
           );
         })
-        .value()}
+      }
     </ul>
   );
 }
